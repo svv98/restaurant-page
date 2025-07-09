@@ -16,6 +16,7 @@ html, body {
 }
 *{
     box-sizing: border-box;
+    font-family: dangerdays;
 }
 .container{
     height: 100vh; 
@@ -120,9 +121,6 @@ button{
 .currentMenu>.liquid{
     top: 0; 
 }
-.currentMenu>.drop {
-    top: 50%; 
-}
 .socials{
     display: flex;
     flex-direction: column;
@@ -150,11 +148,13 @@ div#content>div{
     justify-items: center;
     padding-top: 20px;
 }
+
+/* HOMEPAGE */
 .homePage>.left{
-    aspect-ratio: 1 / 1;
-    height: calc(100% - 20px);
-    max-height: 100%;
-    max-width: 100%;
+    height: min(calc(100% - 20px), 50cqw);
+    aspect-ratio: 1/1;
+    max-height: 90%;
+    max-width: 90%;
     border: 10px solid rgb(0, 0, 0);
     border-radius: 20%;
     box-shadow: 
@@ -167,6 +167,7 @@ div#content>div{
 
     background-image: url(./media/bar.jpg);
     background-size: cover;
+    margin: 20px;
 }
 .homePage>.right{
     height: 100%;
@@ -181,15 +182,164 @@ div#content>div{
         0 0 30px 0 rgba(0, 0, 0, 0.3)
     ;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
-
-.homePage{
-    color: white;
-}
-
 .homeTitle{
-    font-family: dangerdays;
-    font-size: 120px;
+    font-size: clamp(3.125rem, -0.2083rem + 13.3333vw, 8.125rem);
+    line-height: 1;
     text-align: center;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #1b0303,
+    0 0 42px rgb(65, 8, 8),
+    0 0 82px rgb(134, 14, 14);
+    color: rgb(255, 255, 255);
+}
+.homeLine{
+    font-size: clamp(1.25rem, 0.4167rem + 3.3333vw, 2.5rem);
+    line-height: 1;
+    text-align: center;
+    font-weight: lighter;
+    color: #200303;
+    text-shadow:
+    0 0 7px #aaa9a99f,
+    0 0 10px #888787b4,
+    0 0 21px #47474798;
 }
 
+/* MENU */
+.menuPage>.left{
+    height: min(calc(100% - 20px), 50cqw);
+    aspect-ratio: 1/1;
+    max-height: 90%;
+    max-width: 90%;
+    border: 10px solid rgba(0, 0, 0, 0.747);
+    border-radius: 20%;
+    box-shadow: 
+        0 0 20px #520202,
+        0 0 20px #3a0202,
+        0 0 25px rgb(0, 0, 0),
+        0 0 20px black,
+        0 0 30px rgb(77, 76, 76),
+        inset 0 0 1.3rem rgb(180, 25, 25); 
+
+    background-image: url(./media/bar.jpg);
+    background-size: cover;
+    margin: 20px;
+}
+.menuPage>.right{
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 
+        0 0 10px 0 rgba(0, 0, 0, 0.7),
+        0 0 15px 0 rgba(0, 0, 0, 0.6),
+        0 0 20px 0 rgba(0, 0, 0, 0.5),
+        0 0 25px 0 rgba(0, 0, 0, 0.4),
+        0 0 30px 0 rgba(0, 0, 0, 0.3)
+    ;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menuTitle{
+    font-size: clamp(40px, -0.4167rem + 6.6667vw, 3.75rem);
+    line-height: 1;
+    text-align: center;
+    text-shadow:
+    0 0 7px #000000,
+    0 0 10px #3a0808,
+    0 0 21px #6b0909,
+    0 0 42px rgb(54, 9, 9),
+    0 0 82px rgb(179, 19, 19);
+    color: rgb(158, 19, 19);
+}
+
+.menuNav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.menuNav>button {
+    position: relative;
+    padding: 0 30px;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        all 0.3s ease,
+        transform 0.1s ease;
+    color: white;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 10px 0;
+}
+.menuNav>button > .text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    font-family: dangerdays;
+    color: #fff;
+    font-size: clamp(0.625rem, 0rem + 10vw, 1.25rem);
+    font-weight: lighter;
+}
+.menuNav>button > .liquid {
+  position: absolute;
+  top: -150%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #7e0e0e;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuNav>button > .drop {
+  position: absolute;
+  top: -100%;
+  left: 0%;
+  width: 100%;
+  height: 90%;
+  border-radius: 50%;
+  background: #7e0e0e;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuNav>button:hover .liquid {
+    top: 0; 
+}
+.menuNav>button:hover .drop {
+    top: 50%; 
+}
+button.currentMenuNav{
+    box-shadow: 0 10px 10px 3px #7e0e0e;
+    background-color: #7e0e0e;
+}
+.currentMenuItems{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+}
+.currentMenuItems>button{
+    width: 90%;
+    height: 100%;
+    border: 2px solid rgba(48, 47, 47, 0.301);
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.603);
+    flex-wrap: wrap;
+}
+.itemName{
+    font-size: clamp(0.625rem, 0rem + 10vw, 1.25rem);
+}
