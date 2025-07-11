@@ -6,66 +6,66 @@
     font-style: normal;
 
 }
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/roboto-regular-webfont.woff2') format('woff2'),
+         url('./fonts/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
-/* dangerdays */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  height: 100%;
+}
+/* dangerdays roboto */
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;   
 }
 *{
     box-sizing: border-box;
     font-family: dangerdays;
 }
-.container{
-    height: 100vh; 
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 95%; 
     width: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr;
-
     background-image: url(./media/backround.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    border: 2px solid pink;
+    min-width: 360px;
+}
+.container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 95%; 
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    min-width: 360px;
 }
 
 header{
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 15px 15px 0 rgba(0,0,0,0.6);
-
+    grid-row: 1/2;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 2%;
-    gap: 10px;
-}
-header>.logo{
-    width: min(14vw, 14vh);
-    height: min(14vw, 14vh);
-    min-width: 80px;
-}
-.logo>.logoPNG{
-    background-image: url('./media/logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
     width: 100%;
-    aspect-ratio: 1/1;
-}
-header>nav{
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 15px 15px 0 rgba(0,0,0,0.9),
-    -15px -1px 15px 0 rgba(0,0,0,0.9);
-    height: 100%;
     padding: 0 5%;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
+    min-width: 360px;
 }
 button{
     background-color: transparent;
     border: none;
     color: white;
+    min-width: 0; 
+    flex-shrink: 1;  
 }
 .menuButton {
     position: relative;
@@ -75,14 +75,17 @@ button{
     transition:
         all 0.3s ease,
         transform 0.1s ease;
+    height: 100%;
 }
 .menuButton > .text {
     position: relative;
     z-index: 2;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-    font-family: dangerdays;
+    text-shadow: 
+    0 1px 2px rgb(0, 0, 0),
+    0 0 7px #2b0202,
+    0 0 10px #2e0202;
     color: #fff;
-    font-size: 25px;
+    font-size: 40px;
     font-weight: lighter;
 }
 .menuButton > .liquid {
@@ -98,9 +101,75 @@ button{
 .menuButton > .drop {
   position: absolute;
   top: -100%;
-  left: 0%;
+  left: 0;
   width: 100%;
-  height: 90%;
+  height: 55%;
+  border-radius: 50%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop1 {
+  position: absolute;
+  top: -100%;
+  left: 75%;
+  width: 40%;
+  height: 60%;
+  border-radius: 40%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop2 {
+  position: absolute;
+  top: -100%;
+  left: 74%;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop3 {
+  position: absolute;
+  top: -100%;
+  left: 72%;
+  width: 40%;
+  height: 50%;
+  border-radius: 50%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop4 {
+  position: absolute;
+  top: -100%;
+  left: -15%;
+  width: 30%;
+  height: 40%;
+  border-radius: 40%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop5 {
+  position: absolute;
+  top: -100%;
+  left: -13%;
+  width: 30%;
+  height: 20%;
+  border-radius: 50%;
+  background: #9c0606;
+  transition: top 1s ease; 
+  z-index: 1;
+}
+.menuButton > .drop6 {
+  position: absolute;
+  top: -100%;
+  left: -11%;
+  width: 30%;
+  height: 30%;
   border-radius: 50%;
   background: #9c0606;
   transition: top 1s ease; 
@@ -112,84 +181,53 @@ button{
 .menuButton:hover .drop {
     top: 50%; 
 }
+.menuButton:hover .drop1 {
+    top: 70%; 
+}
+.menuButton:hover .drop2 {
+    top: 105%; 
+}
+.menuButton:hover .drop3 {
+    top: 110%; 
+}
+.menuButton:hover .drop4 {
+    top: 70%; 
+}
+.menuButton:hover .drop5 {
+    top: 90%; 
+}
+.menuButton:hover .drop6 {
+    top: 100%; 
+}
 .currentMenu{
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 0 7px 5px #9c0606,
-    0 10px 10px 0 #9c0606,
-    0 -5px 5px 5px #9c0606;
 }
 .currentMenu>.liquid{
     top: 0; 
 }
 .socials{
+    min-width: 0;
+    flex-shrink: 1;  
     display: flex;
-    flex-direction: column;
     gap: 0;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-end;
+    border: 2px solid red;
+    width: fit-content;
+    flex-direction: column;
 }
 button>svg{
-    width: 20px;
-    height: 20px;
-    fill: rgb(170, 169, 169);
+    width: 25px;
+    height: 25px;
+    fill: rgb(255, 255, 255);
     cursor: pointer;
 }
 button>svg:hover{
-    fill: rgb(255, 255, 255);
-}
-
-div#content>div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-items: center;
-    padding-top: 20px;
-}
-
-/* HOMEPAGE */
-.homePage>.left{
-    height: min(calc(100% - 20px), 50cqw);
-    aspect-ratio: 1/1;
-    max-height: 90%;
-    max-width: 90%;
-    border: 10px solid rgb(0, 0, 0);
-    border-radius: 20%;
-    box-shadow: 
-        0 0 20px #520202,
-        0 0 20px #3a0202,
-        0 0 25px rgb(0, 0, 0),
-        0 0 20px black,
-        0 0 30px rgb(77, 76, 76),
-        inset 0 0 1.3rem rgb(180, 25, 25); 
-
-    background-image: url(./media/bar.jpg);
-    background-size: cover;
-    margin: 20px;
-}
-.homePage>.right{
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 
-        0 0 10px 0 rgba(0, 0, 0, 0.7),
-        0 0 15px 0 rgba(0, 0, 0, 0.6),
-        0 0 20px 0 rgba(0, 0, 0, 0.5),
-        0 0 25px 0 rgba(0, 0, 0, 0.4),
-        0 0 30px 0 rgba(0, 0, 0, 0.3)
-    ;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    fill:  #b80606;
 }
 .homeTitle{
-    font-size: clamp(3.125rem, -0.2083rem + 13.3333vw, 8.125rem);
+    min-width: 300px;
+    font-size: 60px;
     line-height: 1;
     text-align: center;
     text-shadow:
@@ -197,149 +235,156 @@ div#content>div{
     0 0 10px #fff,
     0 0 21px #1b0303,
     0 0 42px rgb(65, 8, 8),
-    0 0 82px rgb(134, 14, 14);
-    color: rgb(255, 255, 255);
+    0 0 50px rgb(0, 0, 0);
+    color: white;
+    margin: 0 10px;
+    min-width: 0;
+    flex-shrink: 1;
+    margin-top: 10px;
 }
-.homeLine{
-    font-size: clamp(1.25rem, 0.4167rem + 3.3333vw, 2.5rem);
+.homeTitle>span{
+    font-size: 40px;
+}
+.homeTitle:hover{
+    cursor: pointer;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #470404,
+    0 0 25px rgb(65, 8, 8),
+    0 0 30px rgb(224, 8, 8);
+    color: white;
+}
+
+@media (width <= 640px){
+    .homeTitle{
+        font-size: 20px;
+        text-wrap: nowrap;
+        text-shadow:
+            0 0 2px #fff,
+            0 0 5px #fff,
+            0 0 10px #1b0303,
+            0 0 15px rgb(65, 8, 8),
+            0 0 20px rgb(0, 0, 0);
+    }
+    .homeTitle>span{
+    font-size: 10px;
+    }
+    .menuButton {
+    padding: 0 15px;
+    }
+    .menuButton>.text {
+    font-size: 15px;
+    }
+    button>svg{
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (640px < width < 895px){
+    .homeTitle{
+        font-size: 40px;
+        text-wrap: nowrap;
+        text-shadow:
+            0 0 2px #fff,
+            0 0 5px #fff,
+            0 0 10px #1b0303,
+            0 0 15px rgb(65, 8, 8),
+            0 0 20px rgb(0, 0, 0);
+    }
+    .homeTitle>span{
+    font-size: 25px;
+    }
+    .menuButton {
+    padding: 0 20px;
+    }
+    .menuButton>.text {
+    font-size: 30px;
+    }
+    button>svg{
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (width >= 895px){
+    .socials{
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .socials>button>svg{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+#content{
+    grid-row: 2/3;
+    height: 100%;
+    width: 100%;
+}
+
+/* HOMEPAGE */
+.homePage{
+    justify-content: space-around;
+    align-items: center;
+    background-color: #00000011;
+    display: none;
+    height: 100%;
+    width: 100%;
+    /* display: flex; */
+    min-width: 360px;
+}
+.homeText{
+    font-size: 130px;
     line-height: 1;
     text-align: center;
     font-weight: lighter;
-    color: #200303;
+    color: #ffffff;
     text-shadow:
-    0 0 7px #aaa9a99f,
-    0 0 10px #888787b4,
-    0 0 21px #47474798;
+        0 0 7px #000000,
+        0 0 10px rgb(0, 0, 0)000,
+        0 0 21px #000000,
+        0 0 42px rgb(0, 0, 0),
+        0 0 50px rgb(0, 0, 0),
+        0 0 60px rgb(0, 0, 0);
+    opacity: 30%;
+    min-width: 180px;
+    text-wrap: wrap;
 }
+.homePage>svg{
+    opacity: 20%;
+    height: 100%;
+    width: 300px; 
+}
+
+@media (width <= 640px){
+    .homeText{
+        font-size: 70px;
+    }
+    .homePage>svg{
+        width: 170px; 
+    }
+}
+@media (640px < width < 895px){
+    .homeText{
+        font-size: 120px;
+    }
+    .homePage>svg{
+        width: 200px; 
+    }
+}
+@media (width >= 895px){
+    .homeText{
+        font-size: 140px;
+    }
+    .homePage>svg{
+        width: 350px; 
+    }
+}
+
 
 /* MENU */
-.menuPage>.left{
-    height: min(calc(100% - 20px), 50cqw);
-    aspect-ratio: 1/1;
-    max-height: 90%;
-    max-width: 90%;
-    border: 10px solid rgba(0, 0, 0, 0.747);
-    border-radius: 20%;
-    box-shadow: 
-        0 0 20px #520202,
-        0 0 20px #3a0202,
-        0 0 25px rgb(0, 0, 0),
-        0 0 20px black,
-        0 0 30px rgb(77, 76, 76),
-        inset 0 0 1.3rem rgb(180, 25, 25); 
-
-    background-image: url(./media/bar.jpg);
-    background-size: cover;
-    margin: 20px;
-}
-.menuPage>.right{
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 
-        0 0 10px 0 rgba(0, 0, 0, 0.7),
-        0 0 15px 0 rgba(0, 0, 0, 0.6),
-        0 0 20px 0 rgba(0, 0, 0, 0.5),
-        0 0 25px 0 rgba(0, 0, 0, 0.4),
-        0 0 30px 0 rgba(0, 0, 0, 0.3)
-    ;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.menuTitle{
-    font-size: clamp(40px, -0.4167rem + 6.6667vw, 3.75rem);
-    line-height: 1;
-    text-align: center;
-    text-shadow:
-    0 0 7px #000000,
-    0 0 10px #3a0808,
-    0 0 21px #6b0909,
-    0 0 42px rgb(54, 9, 9),
-    0 0 82px rgb(179, 19, 19);
-    color: rgb(158, 19, 19);
-}
-
-.menuNav{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-.menuNav>button {
-    position: relative;
-    padding: 0 30px;
-    overflow: hidden;
-    cursor: pointer;
-    transition:
-        all 0.3s ease,
-        transform 0.1s ease;
-    color: white;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.575);
-    padding: 10px 0;
-}
-.menuNav>button > .text {
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-    font-family: dangerdays;
-    color: #fff;
-    font-size: clamp(0.625rem, 0rem + 10vw, 1.25rem);
-    font-weight: lighter;
-}
-.menuNav>button > .liquid {
-  position: absolute;
-  top: -150%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #7e0e0e;
-  transition: top 1s ease; 
-  z-index: 1;
-}
-.menuNav>button > .drop {
-  position: absolute;
-  top: -100%;
-  left: 0%;
-  width: 100%;
-  height: 90%;
-  border-radius: 50%;
-  background: #7e0e0e;
-  transition: top 1s ease; 
-  z-index: 1;
-}
-.menuNav>button:hover .liquid {
-    top: 0; 
-}
-.menuNav>button:hover .drop {
-    top: 50%; 
-}
-button.currentMenuNav{
-    box-shadow: 0 10px 10px 3px #7e0e0e;
-    background-color: #7e0e0e;
-}
-.currentMenuItems{
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 5px;
-}
-.currentMenuItems>button{
-    width: 90%;
-    height: 100%;
-    border: 2px solid rgba(48, 47, 47, 0.301);
-    display: flex;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.603);
-    flex-wrap: wrap;
-}
-.itemName{
-    font-size: clamp(0.625rem, 0rem + 10vw, 1.25rem);
+.notWatchingRN{
+    display: none;
 }
