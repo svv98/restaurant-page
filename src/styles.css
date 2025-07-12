@@ -25,7 +25,7 @@ body {
     background-image: url(./media/lace.png);
     background-repeat: repeat;
     background-size: 50%;
-    background-color: rgb(19, 19, 19);   
+    background-color: rgb(14, 14, 14);   
 }
 *{
     box-sizing: border-box;
@@ -83,6 +83,7 @@ header button{
         all 0.3s ease,
         transform 0.1s ease;
     height: 100%;
+    border-radius: 0 0 10px 10px;
 }
 .menuButton > .text {
     position: relative;
@@ -206,9 +207,6 @@ header button{
 .menuButton:hover .drop6 {
     top: 100%; 
 }
-.currentMenu{
-    border-radius: 0 0 10px 10px;
-}
 .currentMenu>.liquid{
     top: 0; 
 }
@@ -247,6 +245,7 @@ header button{
     min-width: 0;
     flex-shrink: 1;
     margin-top: 10px;
+    transition: ease .5s;
 }
 .homeTitle>span{
     font-size: 40px;
@@ -260,6 +259,8 @@ header button{
     0 0 25px rgb(65, 8, 8),
     0 0 30px rgb(224, 8, 8);
     color: white;
+    transform: scale(1.3);
+    z-index: 2;
 }
 
 @media (width <= 640px){
@@ -439,10 +440,10 @@ body.menuOpened .background{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30% 1%;
+    padding: 30% 5%;
     margin-top: 5px;
     background-color: rgba(31, 31, 31, 0.7);
-    border: 3px solid rgba(31, 31, 31, 0.3);
+    border: none;
     border-radius: 20% 0 0 20%;
 
     position: relative;
@@ -538,18 +539,169 @@ body.menuOpened .background{
 .menuNavButton:hover .drop3 {
     left: 110%; 
 }
-
+.currentMenuNav>.liquid{
+    left: 0;
+}
 .menuCenter{
     grid-area: 2/2/4/3;
     align-self: stretch;
     background-color: rgba(0, 0, 0, 0.6);
     border: 3px solid rgba(0, 0, 0, 0.2);
     color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
 }
+.menuSubtitle{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    
+    text-shadow: 
+    0 1px 2px rgb(122, 7, 7),
+    0 0 7px #470505,
+    0 0 10px #300202;
+    color: #fff;
+    font-size: 20px;
+}
+.currentMenuList{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    gap: 5px;
+}
+article{
+    width: 100%;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 5px;
+    background-color: rgba(59, 59, 59, 0.247);
+    border-radius: 20px;
+    transition: ease .5s;
+}
+article>img{
+    grid-column: 1/2;
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 70px;
+    border-radius: 20px 0 0 20px;
+    opacity: 80%;
+}
+.itemName{
+    grid-column: 2/3;
+    align-self: center;
+    width: 90%;
+    font-size: 12px;
+    font-family: roboto;
+    text-wrap: wrap;
+    text-align: center;
+    text-shadow: 
+    0 1px 2px rgb(0, 0, 0),
+    0 0 7px #000000,
+    0 0 10px #000000,
+    0 0 15px #000000,
+    0 0 20px #000000;
+}
+article:hover{
+                        box-shadow: 0 0 5px 0 rgb(63, 4, 4),
+                        0 0 10px 0 rgb(36, 2, 2),
+                        0 0 15px 0 black;
+    background-color: #111111;
+    transform: scale(1.15);
+    z-index: 2;
+    cursor: pointer;
+}
+article:hover .bullets{
+    text-shadow:
+    0 0 10px rgb(153, 77, 0),
+    0 0 15px rgb(82, 41, 1),
+    0 0 25px rgb(22, 11, 0);
+}
+article:hover .cheers{
+    text-shadow:
+    0 0 10px rgb(114, 0, 0),
+    0 0 15px rgb(77, 1, 1),
+    0 0 25px rgb(36, 1, 1);
+}
+article:hover .parade{
+    text-shadow:
+    0 0 10px rgb(190, 190, 190),
+    0 0 15px rgb(107, 106, 106),
+    0 0 25px rgb(51, 51, 51);
+}
+article:hover .danger{
+    text-shadow:
+    0 0 10px rgb(0, 184, 255),
+    0 0 15px rgb(3, 113, 156),
+    0 0 25px rgb(1, 33, 46);
+}
+article:hover .conventional{
+    text-shadow:
+    0 0 10px rgb(247, 224, 179),
+    0 0 15px rgb(192, 175, 134),
+    0 0 25px rgb(114, 103, 77);
+}
+article:hover .decay{
+    text-shadow:
+    0 0 10px rgb(58, 77, 109),
+    0 0 15px rgb(35, 46, 65),
+    0 0 25px rgb(18, 24, 34);
+}
+
 .notWatchingRN{
     display: none;
 }
 
+#itemsInfo{
+    width: 70%;
+    min-width: 300px;
+    height: 70%;
+    min-height: 300px;
+    max-height: 90%;
+    background-color: #000000bd;
+    border: none;
+    color: white;
+    padding: 0;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#itemsInfo *{
+    border: 2px solid yellow;
+}
+#itemsInfo:not([open]) {
+  display: none;
+}
+.infoDIV{
+    width: 100%;
+    height: 100%;
+    background-image: url(./media/drinks/ourladyofsorrows.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    display: grid;
+    grid-template-rows: 50% 20% 30%;
+    border: 2px solid white;
+}
+.infoPicDIV{
+    grid-row: 1/2;
+} 
+.infoTitle{
+    grid-row: 2/3;
+}
+.itemDescription{
+    grid-row: 3/4;
+    width: 100%;
+    padding: 5px;
+    font-size: 10px;
+    font-family: roboto;
+}
 /* @media (width <= 640px){
     .homeTitle{
         font-size: 20px;
