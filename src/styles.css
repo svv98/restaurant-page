@@ -263,7 +263,7 @@ header button{
     z-index: 2;
 }
 
-@media (width <= 640px){
+@media (width < 640px){
     .homeTitle{
         font-size: 20px;
         text-wrap: nowrap;
@@ -288,7 +288,7 @@ header button{
         height: 20px;
     }
 }
-@media (640px < width < 895px){
+@media (639px < width < 895px){
     .homeTitle{
         font-size: 40px;
         text-wrap: nowrap;
@@ -367,7 +367,7 @@ header button{
     width: 300px; 
 }
 
-@media (width <= 640px){
+@media (width < 640px){
     .homeText{
         font-size: 70px;
     }
@@ -375,7 +375,7 @@ header button{
         width: 170px; 
     }
 }
-@media (640px < width < 895px){
+@media (639px < width < 895px){
     .homeText{
         font-size: 120px;
     }
@@ -410,6 +410,8 @@ body.menuOpened .background{
     grid-template: auto auto 1fr / 15% 85%;
     align-items: baseline;
     padding-bottom: 2%;
+
+    display: none;
 }
 .menuTitle{
     grid-area: 1/1/2/3;
@@ -430,13 +432,14 @@ body.menuOpened .background{
     grid-area: 2/1/3/2;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2px;
     position: sticky;
-    top: 5%;
+    top: 1%;
 }
 .menuNavButton{
     color: white;
     height: fit-content;
+    max-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -467,6 +470,7 @@ body.menuOpened .background{
 .menuNavButton>svg{
     transform: rotate(270deg);
     width: auto;
+    max-width: 60%;
     position: relative;
     z-index: 2;
 }
@@ -608,9 +612,9 @@ article>img{
     0 0 20px #000000;
 }
 article:hover{
-                        box-shadow: 0 0 5px 0 rgb(63, 4, 4),
-                        0 0 10px 0 rgb(36, 2, 2),
-                        0 0 15px 0 black;
+                        box-shadow: 0 0 15px 0 rgb(63, 4, 4),
+                        0 0 20px 0 rgb(36, 2, 2),
+                        0 0 25px 0 black;
     background-color: #111111;
     transform: scale(1.15);
     z-index: 2;
@@ -652,113 +656,358 @@ article:hover .decay{
     0 0 15px rgb(35, 46, 65),
     0 0 25px rgb(18, 24, 34);
 }
-
 .notWatchingRN{
     display: none;
 }
 
+@media (639px < width < 895px){
+    .menuPage{
+        grid-template: auto auto 1fr / 12% 88%;
+    }
+    .menuTitle{ 
+        font-size: 32px;
+        text-shadow: 
+        0 1px 10px rgb(0, 0, 0),
+        0 0 15px #2b0202,
+        0 0 20px #2e0202;       
+    }
+    .menuNavButton .text{
+        font-size: 15px;
+        text-shadow: 
+        0 1px 10px rgb(0, 0, 0),
+        0 0 15px #2b0202,
+        0 0 20px #2e0202; 
+    }
+    .menuNavButton{
+        max-height: 90px;
+    }
+    .menuSubtitle{
+        text-shadow: 
+        0 1px 10px rgb(122, 7, 7),
+        0 0 15px #470505,
+        0 0 20px #300202;
+        font-size: 25px;
+    }
+    .currentMenuList{
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 5px;
+        gap: 5px;
+    }
+    article{
+        width: 100%;
+        height: 80px;
+    }
+    article>img{
+        height: 80px;
+        border-radius: 25px 0 0 25px;
+    }
+    .itemName{
+        font-size: 15px;
+    }
+    article:hover .bullets{
+        text-shadow:
+        0 0 15px rgb(153, 77, 0),
+        0 0 20px rgb(82, 41, 1),
+        0 0 30px rgb(22, 11, 0);
+    }
+    article:hover .cheers{
+        text-shadow:
+        0 0 15px rgb(114, 0, 0),
+        0 0 20px rgb(77, 1, 1),
+        0 0 30px rgb(36, 1, 1);
+    }
+    article:hover .parade{
+        text-shadow:
+        0 0 15px rgb(190, 190, 190),
+        0 0 20px rgb(107, 106, 106),
+        0 0 30px rgb(51, 51, 51);
+    }
+    article:hover .danger{
+        text-shadow:
+        0 0 15px rgb(0, 184, 255),
+        0 0 20px rgb(3, 113, 156),
+        0 0 30px rgb(1, 33, 46);
+    }
+    article:hover .conventional{
+        text-shadow:
+        0 0 15px rgb(247, 224, 179),
+        0 0 20px rgb(192, 175, 134),
+        0 0 30px rgb(114, 103, 77);
+    }
+    article:hover .decay{
+        text-shadow:
+        0 0 15px rgb(58, 77, 109),
+        0 0 20px rgb(35, 46, 65),
+        0 0 30px rgb(18, 24, 34);
+    }
+}
+@media (width >= 895px){
+    .menuPage{
+        grid-template: auto auto 1fr / 10% 90%;
+    }
+    .menuTitle{ 
+        font-size: 40px;
+        text-shadow: 
+        0 3px 10px rgb(0, 0, 0),
+        0 0 20px #1f0101,
+        0 0 25px #270101,
+        0 0 30px #270101;       
+    }
+    .menuNavButton .text{
+        font-size: 20px;
+        text-shadow: 
+        0 1px 15px rgb(0, 0, 0),
+        0 0 20px #2b0202,
+        0 0 25px #2e0202; 
+    }
+    .menuNavButton{
+        max-height: 110px;
+    }
+    .menuSubtitle{
+        text-shadow: 
+        0 2px 15px rgb(122, 7, 7),
+        0 0 20px #470505,
+        0 0 25px #300202;
+        font-size: 33px;
+    }
+    .currentMenuList{
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 33.33%), 1fr));
+        gap: 6px;
+    }
+    article{
+        height: 90px;
+    }
+    article>img{
+        height: 90px;
+        border-radius: 30px 0 0 30px;
+        object-fit: fill;
+    }
+    .itemName{
+        font-size: 25px;
+    }
+    article:hover .bullets{
+        text-shadow:
+        0 0 20px rgb(153, 77, 0),
+        0 0 30px rgb(82, 41, 1),
+        0 0 40px rgb(22, 11, 0);
+    }
+    article:hover .cheers{
+        text-shadow:
+        0 0 20px rgb(114, 0, 0),
+        0 0 30px rgb(77, 1, 1),
+        0 0 40px rgb(36, 1, 1);
+    }
+    article:hover .parade{
+        text-shadow:
+        0 0 20px rgb(190, 190, 190),
+        0 0 30px rgb(107, 106, 106),
+        0 0 40px rgb(51, 51, 51);
+    }
+    article:hover .danger{
+        text-shadow:
+        0 0 20px rgb(0, 184, 255),
+        0 0 30px rgb(3, 113, 156),
+        0 0 40px rgb(1, 33, 46);
+    }
+    article:hover .conventional{
+        text-shadow:
+        0 0 20px rgb(247, 224, 179),
+        0 0 30px rgb(192, 175, 134),
+        0 0 40px rgb(114, 103, 77);
+    }
+    article:hover .decay{
+        text-shadow:
+        0 0 20px rgb(58, 77, 109),
+        0 0 30px rgb(35, 46, 65),
+        0 0 40px rgb(18, 24, 34);
+    }
+}
+
+
 #itemsInfo{
-    width: 70%;
+    width: min(70cqw, 70cqh);
     min-width: 300px;
     height: 70%;
     min-height: 300px;
     max-height: 90%;
-    background-color: #000000bd;
     border: none;
     color: white;
     padding: 0;
     border-radius: 5%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
-}
-#itemsInfo *{
-    border: 2px solid yellow;
+
+    background-image: url(./media/drinks/ourladyofsorrows.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow:
+        0 0 3px 0 rgb(112, 112, 112),
+        0 0 5px 0 black,
+        0 0 10px 0 black,
+        0 0 20px 0 black,
+        0 0 25px 0 black,
+        inset 0 0 20px 0 black;
+    position: relative;
 }
 #itemsInfo:not([open]) {
   display: none;
 }
-.infoDIV{
-    width: 100%;
-    height: 100%;
-    background-image: url(./media/drinks/ourladyofsorrows.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+#itemsInfo:focus{
+    outline: 2px solid rgb(0, 0, 0);
 
-    display: grid;
-    grid-template-rows: 50% 20% 30%;
-    border: 2px solid white;
 }
-.infoPicDIV{
-    grid-row: 1/2;
-} 
-.infoTitle{
-    grid-row: 2/3;
-}
-.itemDescription{
-    grid-row: 3/4;
-    width: 100%;
-    padding: 5px;
-    font-size: 10px;
+.closeInfo{
+    position: absolute;
+    top: -100%;
+    font-size: 13px;
     font-family: roboto;
+    background-color: rgba(0, 0, 0, 0.178);
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.562);
+
+    transition: ease 0.5s;
 }
-/* @media (width <= 640px){
-    .homeTitle{
-        font-size: 20px;
-        text-wrap: nowrap;
-        text-shadow:
-            0 0 2px #fff,
-            0 0 5px #fff,
-            0 0 10px #1b0303,
-            0 0 15px rgb(65, 8, 8),
-            0 0 20px rgb(0, 0, 0);
-    }
-    .homeTitle>span{
-    font-size: 10px;
-    }
-    .menuButton {
-    padding: 0 15px;
-    }
-    .menuButton>.text {
-    font-size: 15px;
-    }
-    button>svg{
-        width: 20px;
-        height: 20px;
-    }
+#itemsInfo:hover .closeInfo{
+    top: 1%;
 }
-@media (640px < width < 895px){
-    .homeTitle{
-        font-size: 40px;
-        text-wrap: nowrap;
+.infoDIV{
+    height: fit-content;
+    max-height: 50%;
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+    padding: 2% 5%;
+    text-align: left;
+    background-color: #00000079;
+}
+.infoTitle{
+    grid-row: 1/2;
+    font-size: 20px;
+    color: rgb(255, 149, 43);
+    text-shadow:
+    0 0 20px rgb(153, 77, 0),
+    0 0 25px rgb(82, 41, 1),
+    0 0 35px rgb(22, 11, 0);
+}
+.infoDescription{
+    grid-row: 2/3;
+    width: 100%;
+    font-size: 13px;
+    font-family: roboto;
+    margin-bottom: 5px;
+}
+.picCredits{
+    grid-row: 3/4;
+    width: fit-content;
+    font-size: 8px;
+    font-family: roboto;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    border-radius: 2px;
+}
+.picCredits:hover{
+    color: rgb(204, 204, 204);
+}
+.picCredits:focus{
+    outline: 2px solid #1b0303;
+    color: white;
+    text-shadow:
+    0 0 1px rgb(0, 0, 0),
+    0 0 5px rgb(0, 0, 0),
+    0 0 10px rgb(0, 0, 0);
+}
+
+@media (639px < width < 895px){
+    #itemsInfo{
+        width: min(90cqw, 90cqh);
+        height: 80%;
+        border-radius: 5%;
+
+        box-shadow:
+            0 0 5px 0 rgb(66, 66, 66),
+            0 0 20px 0 black,
+            0 0 25px 0 black,
+            0 0 30px 0 black,
+            0 0 35px 0 black,
+            inset 0 0 40px 0 black;
+    }
+    #itemsInfo:focus{
+        outline: 3px solid rgb(0, 0, 0);
+    }
+    .closeInfo{
+        font-size: 18px;
+    }
+    .infoTitle{
+        font-size: 30px;
+    }
+    .infoDescription{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .picCredits{
+        font-size: 12px;
+        border-radius: 2px;
+    }
+    .picCredits:focus{
+        outline: 3px solid #1b0303;
+        color: white;
         text-shadow:
-            0 0 2px #fff,
-            0 0 5px #fff,
-            0 0 10px #1b0303,
-            0 0 15px rgb(65, 8, 8),
-            0 0 20px rgb(0, 0, 0);
-    }
-    .homeTitle>span{
-    font-size: 25px;
-    }
-    .menuButton {
-    padding: 0 20px;
-    }
-    .menuButton>.text {
-    font-size: 30px;
-    }
-    button>svg{
-        width: 25px;
-        height: 25px;
+        0 0 2px rgb(0, 0, 0),
+        0 0 10px rgb(0, 0, 0),
+        0 0 15px rgb(0, 0, 0);
     }
 }
 @media (width >= 895px){
-    .socials{
-        flex-direction: row;
-        flex-wrap: nowrap;
+    #itemsInfo{
+        width: min(90cqw, 90cqh);
+        height: 90%;
+        border-radius: 8%;
+        box-shadow:
+            0 0 8px 0 rgb(66, 66, 66),
+            0 0 25px 0 black,
+            0 0 30px 0 black,
+            0 0 35px 0 black,
+            0 0 40px 0 black,
+            inset 0 0 60px 0 black;
     }
-    .socials>button>svg{
-        width: 40px;
-        height: 40px;
+    #itemsInfo:focus{
+        outline: 4px solid rgb(0, 0, 0);
     }
-} */
+    .closeInfo{
+        font-size: 23px;
+    }
+    .infoTitle{
+        font-size: 40px;
+    }
+    .infoDescription{
+        font-size: 23px;
+        margin-bottom: 10px;
+    }
+    .picCredits{
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    .picCredits:focus{  
+        outline: 4px solid #1b0303;
+        text-shadow:
+        0 0 3px rgb(0, 0, 0),
+        0 0 15px rgb(0, 0, 0),
+        0 0 20px rgb(0, 0, 0);
+    }
+}
+
+/* ABOUT */
+body.aboutOpened .background{
+    height: 30%;
+    min-height: 150px;
+}
+body.aboutOpened .homeTitle{
+    display: none;
+}
+.aboutPage{
+    color: white;
+}
