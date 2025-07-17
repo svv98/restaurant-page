@@ -53,7 +53,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
     justify-items: center;
-    gap: 5%;
+    gap: 4%;
     min-width: 360px;
     min-height: 360px;
 }
@@ -335,14 +335,13 @@ header button{
 
 /* HOMEPAGE */
 .homePage{
+    display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #00000011;
     height: 100%;
     width: 100%;
     min-width: 360px;
-
-    display: none;
 }
 .homeText{
     font-size: 130px;
@@ -411,7 +410,6 @@ body.menuOpened .background{
     align-items: baseline;
     padding-bottom: 2%;
 
-    display: none;
 }
 .menuTitle{
     grid-area: 1/1/2/3;
@@ -657,7 +655,7 @@ article:hover .decay{
     0 0 25px rgb(18, 24, 34);
 }
 .notWatchingRN{
-    display: none;
+    display: none !important;
 }
 
 @media (639px < width < 895px){
@@ -775,10 +773,10 @@ article:hover .decay{
         gap: 6px;
     }
     article{
-        height: 90px;
+        height: 110px;
     }
     article>img{
-        height: 90px;
+        height: 110px;
         border-radius: 30px 0 0 30px;
         object-fit: fill;
     }
@@ -1010,4 +1008,242 @@ body.aboutOpened .homeTitle{
 }
 .aboutPage{
     color: white;
+    background-color: #0000002d;
+    height: min-content;
+    width: 100%;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 5%;
+}
+.aboutPage *:focus{
+    outline: 2px solid red;
+}
+.aboutTitle{
+    width: 100%;
+    font-size: 38px;
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(146, 15, 15, 0.6);
+    border: 3px solid rgba(39, 11, 11, 0.2);
+    border-radius: 10% 10% 0 0;
+    text-shadow: 
+    0 1px 2px rgb(0, 0, 0),
+    0 0 7px #1a0101,
+    0 0 10px #1a0101,
+    0 0 15px #020000,
+    0 0 20px #1a0101,
+    0 0 25px #020000;
+    color: #fff;
+}
+.aboutTitle>span{
+    font-size: 20px;
+}
+.aboutDIV{
+    width: 90%;
+    max-height: 100%;
+    display: grid;
+    grid-template-rows: min-content min-content min-content min-content;
+    
+    gap: 15px;
+}
+.aboutDescription{
+    font-family: roboto;
+    font-size: 12px;
+}
+.aboutDescription>em{
+    font-family: roboto;
+}
+.aboutText{
+    font-size: 20px;
+}
+.aboutLocation>iframe{
+    width: 100%;
+    aspect-ratio: 1.5/1;
+}
+.aboutSocialsButtons{
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+.aboutSocialsButtons>button{
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.aboutSocialsButtons>button>svg{
+    width: 100%;
+    fill: white;
+}
+.aboutSocialsButtons>button>svg:hover{
+    fill:  #b80606;
+    cursor: pointer;
+}
+.aboutContactForm{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.aboutContactForm>label, .aboutContactForm input, .aboutContactForm textarea{
+    font-family: roboto;
+    font-size: 15px;
+    font-weight: bold;
+}
+.aboutContactForm input, .aboutContactForm textarea{
+    font-weight: normal;
+}
+.aboutContactForm input, .aboutContactForm textarea{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+}
+.aboutContactForm input:focus, .aboutContactForm textarea:focus{
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.aboutContactForm>button{
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: #5e0b0b;
+    border: 2px solid #200303;
+    color: white;
+    padding: 5px;
+}
+.aboutContactForm>button:hover{
+    background-color: #ff0000;
+    border: 2px solid #4e2727;
+    color: white;
+    text-shadow: 
+    0 1px 2px rgb(0, 0, 0),
+    0 0 7px #2b0202,
+    0 0 10px #2e0202;
+    cursor: pointer;
+}
+
+@media (639px < width < 895px){
+    .aboutTitle{
+        font-size: 50px;
+        padding: 3px;
+        text-shadow: 
+        0 1px 5px rgb(0, 0, 0),
+        0 0 10px #1a0101,
+        0 0 15px #1a0101,
+        0 0 20px #020000,
+        0 0 25px #1a0101,
+        0 0 25px #020000;
+    }
+    .aboutTitle>span{
+        font-size: 30px;
+    }
+    .aboutDIV{
+        grid-template: min-content min-content min-content / 1fr 1fr;
+        grid-template-areas: 
+        "description location"
+        "socials location"
+        "form form";
+    }
+    .aboutDescription{
+        grid-area: description;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+    .aboutText{
+        font-size: 25px;
+    }
+    .aboutLocation{
+        grid-area: location;
+    }
+    .aboutLocation>iframe{
+        width: 100%;
+        height: 90%;
+    }
+    .aboutSocials{
+        grid-area: socials;
+    }
+    .aboutSocialsButtons>button{
+        width: 40px;
+        height: 40px;
+    }
+    .aboutContactForm{
+        grid-area: form;
+        gap: 10px;
+    }
+    .aboutContactForm>label, .aboutContactForm input, .aboutContactForm textarea{
+        font-size: 18px;
+    }
+    .aboutContactForm>button{
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+@media (width >= 895px){
+    body.aboutOpened .background{
+    height: 20%;
+    min-height: 150px;
+    }
+    .aboutTitle{
+        font-size: 65px;
+        padding: 0;
+        text-shadow: 
+        0 1px 5px rgb(0, 0, 0),
+        0 0 10px #1a0101,
+        0 0 15px #1a0101,
+        0 0 20px #020000,
+        0 0 25px #1a0101,
+        0 0 30px #020000,
+        0 0 35px #020000;
+    }
+    .aboutTitle>span{
+        font-size: 40px;
+    }
+    .aboutDIV{
+        grid-template: min-content min-content min-content / 1fr 1fr;
+        grid-template-areas: 
+        "description location"
+        "socials location"
+        "form form";
+    }
+    .aboutDescription{
+        grid-area: description;
+        font-size: 20px;
+        margin-top: 30px;
+    }
+    .aboutText{
+        font-size: 35px;
+    }
+    .aboutLocation{
+        grid-area: location;
+    }
+    .aboutLocation>iframe{
+        width: 100%;
+        height: 90%;
+        max-height: 350px;
+    }
+    .aboutSocials{
+        grid-area: socials;
+    }
+    .aboutSocialsButtons>button{
+        width: 45px;
+        height: 45px;
+    }
+    .aboutContactForm{
+        grid-area: form;
+        width: 60%;
+        gap: 10px;
+    }
+    .aboutContactForm>label, .aboutContactForm input, .aboutContactForm textarea{
+        font-size: 20px;
+    }
+    .aboutContactForm>button{
+        font-size: 25px;
+        margin-top: 15px;
+    }
 }
