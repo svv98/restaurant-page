@@ -654,9 +654,6 @@ article:hover .decay{
     0 0 15px rgb(35, 46, 65),
     0 0 25px rgb(18, 24, 34);
 }
-.notWatchingRN{
-    display: none !important;
-}
 
 @media (639px < width < 895px){
     .menuPage{
@@ -837,7 +834,6 @@ article:hover .decay{
     justify-content: end;
     align-items: center;
 
-    background-image: url(./media/drinks/ourladyofsorrows.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     box-shadow:
@@ -883,11 +879,6 @@ article:hover .decay{
 .infoTitle{
     grid-row: 1/2;
     font-size: 20px;
-    color: rgb(255, 149, 43);
-    text-shadow:
-    0 0 20px rgb(153, 77, 0),
-    0 0 25px rgb(82, 41, 1),
-    0 0 35px rgb(22, 11, 0);
 }
 .infoDescription{
     grid-row: 2/3;
@@ -904,11 +895,12 @@ article:hover .decay{
     text-decoration: none;
     padding: 0;
     margin: 0;
-    color: rgb(0, 0, 0);
+    color: rgb(146, 146, 146);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 }
 .picCredits:hover{
-    color: rgb(204, 204, 204);
+    color: rgb(255, 255, 255);
 }
 .picCredits:focus{
     outline: 2px solid #1b0303;

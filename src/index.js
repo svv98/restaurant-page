@@ -39,8 +39,8 @@ imgsFood.keys().forEach((key) => {
 });
 
     // DOMs
+const body = document.querySelector('body');
 const content = document.querySelector('#content');
-
 const header = document.querySelector('header');
 
 header.addEventListener('click', (event)=>{
@@ -60,7 +60,6 @@ homeButton();
 
 function clearContent(){
     if(content.getAttribute('class')=='new'){
-        console.log('INITIAL HOME');
         content.removeAttribute('class');
     }
     else{
@@ -72,6 +71,7 @@ function homeButton(){
     clearContent();
     selectedButton('home');
 
+    body.setAttribute('class','homeOpened');
     const homePage = document.createElement('section');
     homePage.classList.add('homePage');
 
@@ -109,6 +109,8 @@ function homeButton(){
 function menuButton(){
     clearContent();
     selectedButton('menu');
+
+    body.setAttribute('class','menuOpened');
     const menuPage = document.createElement('section');
     menuPage.classList.add('menuPage');
 
@@ -204,6 +206,24 @@ function menuButton(){
         }
     });
 
+
+    const menu = document.querySelector('.menuCenter');
+    const infoModal = document.querySelector('#itemsInfo');
+
+    menu.addEventListener('click', (event)=>{
+        if(event.target.closest("article")){
+            let itemButton = event.target.closest("article");
+            itemInfoModal(itemButton);
+            
+            infoModal.showModal();
+        }
+    });
+
+    infoModal.addEventListener('click', (event)=>{
+        if(event.target.closest(".picCredits")){}
+        else infoModal.close();
+    });
+
     function menuNavButton(){
         const menuCenter = document.createElement('div');
         menuCenter.classList.add('menuCenter');
@@ -231,6 +251,7 @@ function menuButton(){
                 for(let item of cocktailsList){
                     const article = document.createElement('article');
                     article.id= item.id;
+                    article.classList.add("cocktailButton");
 
                     const itemPic = document.createElement('img');
                     itemPic.src = coctailsIMGs[item.id];
@@ -247,9 +268,6 @@ function menuButton(){
                 menuCenter.appendChild(cocktailItems);
                 menuPage.appendChild(menuCenter);
                 content.appendChild(menuPage);
-            }
-            else{
-                console.log('already here');
             }
         }
 
@@ -275,6 +293,7 @@ function menuButton(){
                 for(let item of foodList){
                     const article = document.createElement('article');
                     article.id= item.id;
+                    article.classList.add("foodButton");
 
                     const itemPic = document.createElement('img');
                     itemPic.src = foodIMGs[item.id];
@@ -292,32 +311,159 @@ function menuButton(){
                 menuPage.appendChild(menuCenter);
                 content.appendChild(menuPage);
             }
-            else{
-                console.log('already here');
-            }
         }
         
         return {getCocktail,  getFood}
     }
+    function itemInfoModal(button){
+        let itemImage, itemName, itemDescription, itemCredits, itemClass, buttonClass, itemID;
+        itemID = button.id;
+        buttonClass = button.getAttribute('class');
 
-    const menu = document.querySelector('.menuCenter');
-    const infoModal = document.querySelector('#itemsInfo');
-
-    menu.addEventListener('click', (event)=>{
-        if(event.target.closest(".itemName")){
-            infoModal.showModal();
+        if(buttonClass == 'cocktailButton'){
+            for(let items of cocktailsList){
+                if (items.id == itemID){
+                    itemName = items.name;
+                    itemDescription = items.description;
+                    itemCredits = items.credits;
+                    itemClass = items.class[1];
+                    itemImage = coctailsIMGs[items.id];
+                }
+            }
         }
-    });
+        else{
+            for(let items of foodList){
+                if (items.id == itemID){
+                    itemName = items.name;
+                    itemDescription = items.description;
+                    itemCredits = items.credits;
+                    itemClass = items.class[1];
+                    itemImage = foodIMGs[items.id];
+                }
+            }
+        }
 
-    infoModal.addEventListener('click', (event)=>{
-        if(event.target.closest(".picCredits")){}
-        else infoModal.close();
-    });
+        infoModal.setAttribute('style',`background-image: url(${itemImage});`);
+
+        const infoTitle = document.querySelector('.infoTitle');
+        infoTitle.textContent = itemName;
+        infoTitle.setAttribute('style',`${albumColors(itemClass)}`)
+
+        const infoDescription = document.querySelector('.infoDescription');
+        infoDescription.textContent = itemDescription;
+
+        const picCredits = document.querySelector('.picCredits');
+        picCredits.setAttribute('href', `${itemCredits}`);
+       
+
+    }
 }
 function aboutButton(){
     clearContent();
     selectedButton('about');
-console.log('ABOUT');
+    
+    body.setAttribute('class','aboutOpened');
+    const aboutPage = document.createElement('section');
+    aboutPage.classList.add('aboutPage');
+
+    const aboutTitle = document.createElement('div');
+    aboutTitle.classList.add('aboutTitle');
+    aboutTitle.innerHTML="DANGER DAYS <span>AND</span> NIGHTS";
+    aboutPage.appendChild(aboutTitle);
+
+    const aboutDIV = document.createElement('div');
+    aboutDIV.classList.add('aboutDIV');
+
+    const aboutDescription = document.createElement('div');
+    aboutDescription.classList.add('aboutDescription');
+    aboutDescription.innerHTML= `Welcome to Danger Days and Nights — a bar born from the 
+        spirit of rebellion, survival, and the soundtrack of our 
+        favorite broken hearts. Inspired by the world of 
+        <em>Danger Days: The True Lives of the Fabulous Killjoys</em>, we're 
+        a refuge for the lost, the damned, the dreamers, and anyone 
+        who finds beauty in the dark and neon-lit edges of life. 
+        <br><br>Come lose yourself in the music, sip on cocktails with 
+        names as bold as the lyrics that shaped us, and remember: 
+    you're never alone in the desert.`;
+    aboutDIV.appendChild(aboutDescription);
+
+    const aboutLocation = document.createElement('div');
+    aboutLocation.classList.add('aboutLocation');
+    const aboutTextLocation = document.createElement('div');
+    aboutTextLocation.classList.add('aboutText');
+    aboutTextLocation.textContent="Location";
+    let map = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.507570728618!2d-74.01895847995077!3d40.711627668433344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1aee6620bb%3A0x624d5c815c1b2c2e!2sBattery%20Park%20City%2C%20Nueva%20York%2C%20EE.%20UU.!5e0!3m2!1ses!2smx!4v1752709350270!5m2!1ses!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+    aboutLocation.appendChild(aboutTextLocation);
+    aboutLocation.insertAdjacentHTML('beforeend', map);
+    aboutDIV.appendChild(aboutLocation);
+
+    const aboutSocials = document.createElement('div');
+    aboutSocials.classList.add('aboutSocials');
+    const aboutTextSocials = document.createElement('div');
+    aboutTextSocials.classList.add('aboutText');
+    aboutTextSocials.textContent="Follow Us!!";
+    const aboutSocialsButtons = document.createElement('div');
+    aboutSocialsButtons.classList.add('aboutSocialsButtons');
+    const socialsFB = document.createElement('button');
+    socialsFB.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
+    <path d="M32,6C17.642,6,6,17.642,6,32c0,13.035,9.603,23.799,22.113,25.679V38.89H21.68v-6.834h6.433v-4.548	c0-7.529,3.668-10.833,9.926-10.833c2.996,0,4.583,0.223,5.332,0.323v5.965h-4.268c-2.656,0-3.584,2.52-3.584,5.358v3.735h7.785	l-1.055,6.834h-6.73v18.843C48.209,56.013,58,45.163,58,32C58,17.642,46.359,6,32,6z"></path>
+    </svg>`;
+    aboutSocialsButtons.appendChild(socialsFB);
+    const socialsIG = document.createElement('button');
+    socialsIG.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+    <path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
+    </svg>`;
+    aboutSocialsButtons.appendChild(socialsIG);
+    const socialsTT = document.createElement('button');
+    socialsTT.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+    <path d="M41,4H9C6.243,4,4,6.243,4,9v32c0,2.757,2.243,5,5,5h32c2.757,0,5-2.243,5-5V9C46,6.243,43.757,4,41,4z M37.006,22.323 c-0.227,0.021-0.457,0.035-0.69,0.035c-2.623,0-4.928-1.349-6.269-3.388c0,5.349,0,11.435,0,11.537c0,4.709-3.818,8.527-8.527,8.527 s-8.527-3.818-8.527-8.527s3.818-8.527,8.527-8.527c0.178,0,0.352,0.016,0.527,0.027v4.202c-0.175-0.021-0.347-0.053-0.527-0.053 c-2.404,0-4.352,1.948-4.352,4.352s1.948,4.352,4.352,4.352s4.527-1.894,4.527-4.298c0-0.095,0.042-19.594,0.042-19.594h4.016 c0.378,3.591,3.277,6.425,6.901,6.685V22.323z"></path>
+    </svg>`;
+    aboutSocialsButtons.appendChild(socialsTT);
+    aboutSocials.appendChild(aboutTextSocials);
+    aboutSocials.appendChild(aboutSocialsButtons);
+    aboutDIV.appendChild(aboutSocials);
+    
+    const aboutContactForm = document.createElement('fieldset');
+    aboutContactForm.classList.add('aboutContactForm');
+    const aboutTextForm = document.createElement('legend');
+    aboutTextForm.classList.add('aboutText');
+    aboutTextForm.textContent="Contact Us!!";
+    const formName = document.createElement('label');
+    formName.for='name';
+    formName.textContent="Name";
+    const nameInput = document.createElement('input');
+    nameInput.type='text';
+    nameInput.id='name';
+    nameInput.name='contactName';
+    formName.appendChild(nameInput);
+    const formEmail = document.createElement('label');
+    formEmail.for='email';
+    formEmail.textContent="Email";
+    const emaiInput = document.createElement('input');
+    emaiInput.type='email';
+    emaiInput.id='email';
+    emaiInput.name='contactEmail';
+    formEmail.appendChild(emaiInput);
+    const formComment = document.createElement('label');
+    formComment.for='comment';
+    formComment.textContent="Comments / Suggestions / Opinions";
+    const commentTextArea = document.createElement('textarea');
+    commentTextArea.id='comment';
+    commentTextArea.name='comments';
+    formComment.appendChild(commentTextArea);
+    const submitForm = document.createElement('button');
+    submitForm.type='submit';
+    submitForm.textContent='SUBMIT';
+
+    aboutContactForm.appendChild(aboutTextForm);
+    aboutContactForm.appendChild(formName);
+    aboutContactForm.appendChild(formEmail);
+    aboutContactForm.appendChild(formComment);
+    aboutContactForm.appendChild(submitForm);
+    aboutDIV.appendChild(aboutContactForm);
+
+    aboutPage.appendChild(aboutDIV);
+    content.appendChild(aboutPage);
 }
 function selectedButton(button){
     if(button=='home'){
@@ -339,5 +485,29 @@ function selectedButton(button){
         document.querySelector('.about').classList.add('currentMenu');
     }
     
+}
+function albumColors(album){
+    let color;
+    switch(album){
+        case 'bullets':
+            color = "color: rgb(255, 149, 43); text-shadow: 0 0 20px rgb(153, 77, 0), 0 0 25px rgb(82, 41, 1), 0 0 35px rgb(22, 11, 0);";
+            break;
+        case 'cheers':
+            color = "color: rgb(209, 23, 23);  text-shadow: 0 0 10px rgb(114, 0, 0), 0 0 15px rgb(77, 1, 1), 0 0 25px rgb(36, 1, 1);";
+            break;
+        case 'parade':
+            color = "color: rgb(226, 226, 226); text-shadow: 0 0 10px rgb(190, 190, 190), 0 0 15px rgb(107, 106, 106), 0 0 25px rgb(51, 51, 51);";
+            break;
+        case 'danger':
+            color = "color: rgb(109, 214, 255); text-shadow: 0 0 10px rgb(0, 184, 255), 0 0 15px rgb(3, 113, 156), 0 0 25px rgb(1, 33, 46);";
+            break;
+        case 'conventional':
+            color = "color: rgb(243, 225, 188); text-shadow: 0 0 10px rgb(247, 224, 179), 0 0 15px rgb(192, 175, 134), 0 0 25px rgb(114, 103, 77);";
+            break;
+        case 'decay':
+            color = "color: rgb(101, 118, 146); text-shadow: 0 0 10px rgb(58, 77, 109), 0 0 15px rgb(35, 46, 65), 0 0 25px rgb(18, 24, 34);";
+            break;
+    }
+    return color
 }
 
